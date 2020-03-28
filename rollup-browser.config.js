@@ -3,7 +3,7 @@ import pkg from './package.json';
 
 export default {
   ...BaseConfig({
-    igNodeNodeModules: false
+    ignoreNodeModules: false
   }),
   output: [{
     file: pkg.iife.file,
