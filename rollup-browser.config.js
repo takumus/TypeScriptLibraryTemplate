@@ -6,8 +6,8 @@ export default {
     ignoreNodeModules: false
   }),
   output: [{
-    file: pkg.iife.file,
-    name: pkg.iife.name,
+    file: pkg.buildSettings.iife.file,
+    name: pkg.buildSettings.iife.name,
     format: 'iife',
     globals: {}
   }]

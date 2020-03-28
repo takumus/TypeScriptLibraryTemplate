@@ -12,9 +12,13 @@
   },
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
-  "iife": {
-    "name": "TypeScriptLibraryTemplate",
-    "file": "./dist/index.iife.js"
+  "buildSettings": {
+    "entry": "./src/index.ts",
+    "include": "./src/**/*",
+    "iife": {
+      "name": "LibraryName",
+      "file": "./dist/index.iife.js"
+    }
   },
   "types": "./dist/types/index.d.ts",
   "author": {

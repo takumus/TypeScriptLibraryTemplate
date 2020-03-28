@@ -2,15 +2,16 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import chalk from 'chalk';
+import pkg from './package.json';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default (options) => ({
-  input: './src/index.ts',
+  input: pkg.buildSettings.entry,
   plugins: [
     resolve({ extensions }),
     commonjs(),
-    babel({ extensions, include: ['src/**/*']}),
+    babel({ extensions, include: [pkg.buildSettings.include]}),
   ],
   external(id) {
     const isNodeModules = !(/\.+\//.test(id));
