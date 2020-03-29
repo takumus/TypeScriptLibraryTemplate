@@ -17,7 +17,8 @@
     "include": "./src/**/*",
     "iife": {
       "name": "LibraryName",
-      "file": "./dist/index.iife.js"
+      "file": "./dist/index.iife.js",
+      "includesNodeModules": true
     }
   },
   "types": "./dist/types/index.d.ts",

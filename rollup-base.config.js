@@ -16,11 +16,11 @@ export default (options) => ({
   external(id) {
     const isNodeModules = !(/\.+\//.test(id));
     const ignore = options.ignoreNodeModules ? isNodeModules : false;
-    if (ignore) {
-      console.log(chalk.bgRed(`-- ${id} `));
-    }else {
-      console.log(chalk.bgCyan(`++ ${id} `));
-    }
+    // if (ignore) {
+    //   console.log(chalk.bgRed(`-- ${id} `));
+    // }else {
+    //   console.log(chalk.bgCyan(`++ ${id} `));
+    // }
     return ignore;
   }
 });
