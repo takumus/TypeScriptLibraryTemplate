@@ -19,7 +19,8 @@
       "name": "LibraryName",
       "file": "./dist/index.iife.js",
       "includesNodeModules": true
-    }
+    },
+    "outputIgnoreLog": false
   },
   "types": "./dist/types/index.d.ts",
   "author": {
