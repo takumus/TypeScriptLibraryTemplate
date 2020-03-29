@@ -15,10 +15,13 @@
   "buildSettings": {
     "entry": "./src/index.ts",
     "include": "./src/**/*",
-    "iife": {
+    "browser": {
       "name": "LibraryName",
       "file": "./dist/index.iife.js",
       "includesNodeModules": true
+    },
+    "cjs_esm": {
+      "includesNodeModules": false
     },
     "outputIgnoreLog": false
   },
