@@ -8,7 +8,7 @@ const tasks = [
 ];
 let taskCount = 0;
 tasks.forEach((task) => {
-    cp.exec([/^win/.test(process.platform) ? 'npx.cmd' : 'npm', ...task.args].join(' '), (error, stdout, stderr) => {
+    cp.exec([/^win/.test(process.platform) ? 'npx.cmd' : 'npx', ...task.args].join(' '), (error, stdout, stderr) => {
         taskCount++;
         console.log(`\n(${taskCount}/${tasks.length})[${task.name}]`);
         process.stdout.write(stdout || stderr);
