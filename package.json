@@ -18,10 +18,10 @@
     "browser": {
       "name": "LibraryName",
       "file": "./dist/index.iife.js",
-      "includesNodeModules": true
+      "exportWithNodeModules": true
     },
     "cjs_esm": {
-      "includesNodeModules": false
+      "exportWithNodeModules": false
     },
     "outputIgnoreLog": false
   },

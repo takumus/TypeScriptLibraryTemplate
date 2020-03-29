@@ -3,7 +3,7 @@ import pkg from './package.json';
 
 export default {
   ...BaseConfig({
-    ignoreNodeModules: !pkg.buildSettings.browser.includesNodeModules
+    ignoreNodeModules: !pkg.buildSettings.browser.exportWithNodeModules
   }),
   output: [{
     file: pkg.buildSettings.browser.file,
