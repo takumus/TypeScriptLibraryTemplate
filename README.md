@@ -12,5 +12,5 @@ If you have any troubles with paralell build mode, it might be better to try ser
 *Paralell build mode is a default setting.*
 ### serial
 It runs a build in serial. When you use serial build mode, it slows down, but it might be more stable than using paralell build mode.
-# I forked the pretty damn cool repository.
+# I forked this pretty damn cool repository.
 <https://github.com/a-tarasyuk/rollup-typescript-babel>
