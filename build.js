@@ -14,9 +14,7 @@ function buildParallel() { tasks.forEach((task) => build(task)); };
 function buildSerial(task) { if (task) build(task, () => buildSerial(tasks.shift())); };
 function build(task, callback) {
   cp.exec([...npx, ...task.args].join(' '), (error, stdout, stderr) => {
-    taskCount++;
-    console.log(`\n(${taskCount}/${taskLength})[${task.name}]`);
-    process.stdout.write(error || stdout || stderr);
+    process.stdout.write(`\n(${++taskCount}/${taskLength})[${task.name}]\n` + (error || stdout || stderr));
     if(callback) callback();
   });
 }
