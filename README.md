@@ -8,7 +8,6 @@ npm run build
 ## buildSettings.buildMode
 ### paralell
 You can run a build fast because it is going to build cjs/esm/browser/d.ts at the same time.  
-  
 If you have any troubles with paralell build mode, it might be better to try serial build mode.  
 *Paralell build mode is a default setting.*
 ### serial
