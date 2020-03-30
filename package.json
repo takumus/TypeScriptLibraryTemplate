@@ -23,7 +23,8 @@
     "esm": {
       "exportWithNodeModules": true
     },
-    "outputIgnoreLog": false
+    "outputIgnoreLog": false,
+    "buildMode": "paralell"
   },
   "types": "./dist/types/index.d.ts",
   "author": {
