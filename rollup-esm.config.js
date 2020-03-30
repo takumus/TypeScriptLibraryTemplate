@@ -3,12 +3,9 @@ import pkg from './package.json';
 
 export default {
   ...BaseConfig({
-    ignoreNodeModules: !pkg.buildSettings.cjs_esm.exportWithNodeModules
+    ignoreNodeModules: !pkg.buildSettings.esm.exportWithNodeModules
   }),
   output: [{
-    file: pkg.main,
-    format: 'cjs'
-  }, {
     file: pkg.module,
     format: 'es',
   }],

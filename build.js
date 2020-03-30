@@ -1,17 +1,29 @@
 const cp = require('child_process');
-console.log('build started!');
+const buildMode = require('./package.json').buildSettings.buildMode;
+const npx = [/^win/.test(process.platform) ? 'npx.cmd' : 'npx'];
 const tasks = [
-    { name: 'd.ts', args: ['tsc', '--emitDeclarationOnly'] },
-    { name: 'cjs', args: ['rollup',  '-c', 'rollup-cjs.config.js'] },
-    { name: 'esm', args: ['rollup',  '-c', 'rollup-esm.config.js'] },
-    { name: 'browser', args: ['rollup',  '-c', 'rollup-browser.config.js']}
+  { name: 'rimraf', args: ['rimraf', './dist'] },
+  { name: 'cjs', args: ['rollup', '-c', 'rollup-cjs.config.js'] },
+  { name: 'esm', args: ['rollup', '-c', 'rollup-esm.config.js'] },
+  { name: 'browser', args: ['rollup', '-c', 'rollup-browser.config.js'] },
+  { name: 'd.ts', args: ['tsc', '--emitDeclarationOnly'] }
 ];
+const taskLength = tasks.length;
 let taskCount = 0;
-tasks.forEach((task) => {
-    cp.exec([/^win/.test(process.platform) ? 'npx.cmd' : 'npx', ...task.args].join(' '), (error, stdout, stderr) => {
-        taskCount++;
-        console.log(`\n(${taskCount}/${tasks.length})[${task.name}]`);
-        process.stdout.write(stdout || stderr);
-        if (taskCount == tasks.length) console.log('build complete!');
-    });
-});
+function buildParallel() { tasks.forEach((task) => build(task)); };
+function buildSerial(task) { if (task) build(task, () => buildSerial(tasks.shift())); };
+function build(task, callback) {
+  cp.exec([...npx, ...task.args].join(' '), (error, stdout, stderr) => {
+    taskCount++;
+    console.log(`\n(${taskCount}/${taskLength})[${task.name}]`);
+    process.stdout.write(error || stdout || stderr);
+    if(callback) callback();
+  });
+}
+if (buildMode == 'serial') {
+  console.log('begin serial build');
+  buildSerial(tasks.shift());
+}else {
+  console.log('begin paralell build');
+  buildParallel();
+}
