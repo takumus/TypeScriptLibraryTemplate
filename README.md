@@ -1,3 +1,4 @@
-# Typescriptでライブラリとか作るマン（たくむす用）
-
-これは俺用。  
+# Build
+```
+npm run build
+```
